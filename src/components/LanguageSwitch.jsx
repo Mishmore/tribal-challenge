@@ -4,7 +4,7 @@ import i18n from 'i18next'
 
 const Wrapper = tw.div`overflow-hidden rounded divide-x`
 
-const Button = tw.button`px-2 bg-white`
+const Button = tw.button`px-3 last:pr-0 bg-white`
 
 const LanguageSwitch = () => {
   const handleSwitch = (lang) => {

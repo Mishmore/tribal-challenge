@@ -57,10 +57,17 @@ const PeopleList = () => {
     <List>
       {status === 'succeeded' &&
         list.map((elm) => (
-          <Item key={elm.personId}>
-            <p tw="p-3 xl:p-5">{elm.name}</p>
-            <p tw="p-3 xl:p-5 text-gray-600">{elm.role}</p>
-            <div tw="flex h-full">
+          <Item
+            key={elm.personId}
+            tw="hover:shadow-none cursor-default items-start xl:items-center"
+          >
+            <div tw="grid xl:grid-cols-4 flex-grow gap-2 p-3 xl:p-4">
+              <p>{elm.name}</p>
+              <p tw="text-gray-600">{elm.role}</p>
+              <p tw="text-gray-600">{elm.phone}</p>
+              <p tw="text-gray-600">{elm.email}</p>
+            </div>
+            <div tw="flex h-full flex-shrink">
               <IconWrapper tw="mr-3 pr-0" onClick={() => handleEdit(elm)}>
                 <Icon src={editIcon} alt="edit" />
               </IconWrapper>
