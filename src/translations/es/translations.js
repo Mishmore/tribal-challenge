@@ -25,6 +25,7 @@ const es = {
   person_create_success: 'La persona fue creada con éxito',
   person_edit_success: 'La persona fue editada con éxito',
   person_delete_success: 'La persona fue eliminada con éxito',
+  no_results: 'No se encontraron resultados',
 }
 
 export default es

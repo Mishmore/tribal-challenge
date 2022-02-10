@@ -25,6 +25,7 @@ const en = {
   person_create_success: 'Person was created succesfully.',
   person_edit_success: 'Person was edited succesfully.',
   person_delete_success: 'Person was deleted succesfully.',
+  no_results: 'No results found.',
 }
 
 export default en
