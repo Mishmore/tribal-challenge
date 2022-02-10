@@ -11,27 +11,29 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { createPerson, getPeople } from '@state/peopleSlice'
+import { editPerson, getPeople, selectPersonDetail } from '@state/peopleSlice'
 import {
   handleLoader,
-  handleModalCreatePerson,
-  selectModalCreatePerson,
+  handleModalEditPerson,
+  selectModalEditPerson,
 } from '@state/uiSlice'
 
 import { Modal } from '@components/Modal'
 import { Field } from '@components/Field'
 import { Input } from '@components/Input'
 import { Button } from '@components/Button'
+import { useEffect } from 'react'
 
 const Form = tw.form`flex flex-col`
 
-const CreatePersonModal = () => {
+const EditPersonModal = () => {
   const { t } = useTranslation()
 
   const { id } = useParams()
 
   const dispatch = useDispatch()
-  const modal = useSelector(selectModalCreatePerson)
+  const modal = useSelector(selectModalEditPerson)
+  const person = useSelector(selectPersonDetail)
 
   const schema = yup.object({
     name: yup
@@ -61,19 +63,24 @@ const CreatePersonModal = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) })
+  } = useForm({
+    resolver: yupResolver(schema),
+  })
 
   const closeModal = () => {
     reset()
-    dispatch(handleModalCreatePerson(false))
+    dispatch(handleModalEditPerson(false))
   }
 
   const submit = async (data) => {
     closeModal()
     try {
       dispatch(handleLoader(true))
-      await dispatch(createPerson({ businessId: id, data })).unwrap()
+      await dispatch(
+        editPerson({ businessId: id, personId: person?.personId, data })
+      ).unwrap()
       dispatch(getPeople(id))
       alert('persona creada')
     } catch (e) {
@@ -83,8 +90,18 @@ const CreatePersonModal = () => {
     }
   }
 
+  useEffect(() => {
+    if (person) {
+      setValue('name', person.name)
+      setValue('role', person.role)
+      setValue('email', person.email)
+      setValue('phone', person.phone)
+      setValue('join_date', person.join_date)
+    }
+  }, [person, setValue])
+
   return (
-    <Modal active={modal} handleClose={closeModal} title={t('create_person')}>
+    <Modal active={modal} handleClose={closeModal} title={t('edit_person')}>
       <Form onSubmit={handleSubmit(submit)}>
         <Field label={t('name')}>
           <Input form={register('name')} error={errors.name?.message} />
@@ -114,7 +131,7 @@ const CreatePersonModal = () => {
             {t('cancel')}
           </Button>
           <Button type="submit" tw="w-28 mx-2">
-            {t('create')}
+            {t('save')}
           </Button>
         </div>
       </Form>
@@ -122,4 +139,4 @@ const CreatePersonModal = () => {
   )
 }
 
-export default CreatePersonModal
+export default EditPersonModal

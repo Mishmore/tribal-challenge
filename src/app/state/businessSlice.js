@@ -18,16 +18,20 @@ export const businessSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchBusiness.pending, (state) => {
+      .addCase(getBusiness.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(fetchBusiness.fulfilled, (state, action) => {
+      .addCase(getBusiness.fulfilled, (state, action) => {
         state.status = 'succeeded'
         state.businessList = action.payload.businesses
       })
-      .addCase(fetchBusiness.rejected, (state, action) => {
+      .addCase(getBusiness.rejected, (state, action) => {
         state.status = 'failed'
         state.error = action.error.message
+      })
+      .addCase(getBusinessDetail.fulfilled, (state, action) => {
+        state.status = 'succeeded'
+        state.businessDetail = action.payload
       })
   },
 })
@@ -42,10 +46,21 @@ export const selectBusinessDetail = (state) => state.business.businessDetail
 
 export const selectBusinessListStatus = (state) => state.business.status
 
-export const fetchBusiness = createAsyncThunk(
-  'business/fetchBusiness',
+export const getBusiness = createAsyncThunk(
+  'business/getBusiness',
   async () => {
     const response = await axiosHelper({ url: '/business', method: 'get' })
+    return response.data
+  }
+)
+
+export const getBusinessDetail = createAsyncThunk(
+  'business/getBusinessDetail',
+  async (businessId) => {
+    const response = await axiosHelper({
+      url: `/business/${businessId}`,
+      method: 'get',
+    })
     return response.data
   }
 )

@@ -13,3 +13,7 @@ const colors = {
 export const Button = styled(BaseButton)`
   ${({ color = 'black' }) => colors[color]}
 `
+
+export const ButtomMobile = tw(
+  Button
+)`xl:hidden fixed bottom-3 left-2/4 w-10/12 transform -translate-x-2/4`

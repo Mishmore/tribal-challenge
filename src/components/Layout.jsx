@@ -6,6 +6,8 @@ import { selectLoader } from '@state/uiSlice'
 
 import logo from '@assets/images/tribal-logo.png'
 import { Loader } from '@components/Loader'
+import { Link } from 'react-router-dom'
+import Notification from '@components/Notification'
 
 const LayoutBase = tw.div``
 
@@ -15,6 +17,8 @@ const Container = tw.div`container mx-auto xl:max-w-7xl! py-6 xl:py-8 px-4 xl:px
 
 const Header = tw.div`border-b border-gray-300 sticky top-0 bg-white`
 
+export const SectionHeader = tw.div`flex justify-between mb-5 xl:mb-10 items-center`
+
 export const Layout = ({ children }) => {
   const loader = useSelector(selectLoader)
 
@@ -22,11 +26,14 @@ export const Layout = ({ children }) => {
     <LayoutBase>
       <Header>
         <Container tw="flex justify-center xl:justify-start">
-          <Logo src={logo} />
+          <Link to="/">
+            <Logo src={logo} />
+          </Link>
         </Container>
       </Header>
       <Container>{children}</Container>
       <Loader active={loader} />
+      <Notification />
     </LayoutBase>
   )
 }

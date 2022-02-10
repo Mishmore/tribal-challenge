@@ -2,6 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   loader: false,
+  notification: {
+    active: false,
+    message: '',
+    type: '',
+  },
   modalCreateBusiness: false,
   modalEditBusiness: false,
   modalConfirmDeleteBusiness: false,
@@ -16,6 +21,9 @@ export const uiSlice = createSlice({
   reducers: {
     handleLoader: (state, action) => {
       state.loader = action.payload
+    },
+    handleNotification: (state, action) => {
+      state.notification = action.payload
     },
     handleModalCreateBusiness: (state, action) => {
       state.modalCreateBusiness = action.payload
@@ -40,6 +48,7 @@ export const uiSlice = createSlice({
 
 export const {
   handleLoader,
+  handleNotification,
   handleModalCreateBusiness,
   handleModalEditBusiness,
   handleModalConfirmDeleteBusiness,
@@ -51,6 +60,8 @@ export const {
 export default uiSlice.reducer
 
 export const selectLoader = (state) => state.ui.loader
+
+export const selectNotification = (state) => state.ui.notification
 
 export const selectModalCreateBusiness = (state) => state.ui.modalCreateBusiness
 

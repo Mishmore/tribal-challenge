@@ -15,6 +15,9 @@ export const peopleSlice = createSlice({
     setPersonDetail: (state, action) => {
       state.personDetail = action.payload
     },
+    setStatus: (state, action) => {
+      state.status = action.payload
+    },
   },
   extraReducers(builder) {
     builder
@@ -29,13 +32,13 @@ export const peopleSlice = createSlice({
         state.status = 'failed'
         state.error = action.error.message
       })
-      .addCase(createPeople.fulfilled, (state) => {
-        state.status = 'succeeded'
-      })
+    // .addCase(createPerson.fulfilled, (state) => {
+    //   state.status = 'succeeded'
+    // })
   },
 })
 
-export const { setPersonDetail } = peopleSlice.actions
+export const { setPersonDetail, setStatus } = peopleSlice.actions
 
 export default peopleSlice.reducer
 
@@ -56,11 +59,11 @@ export const getPeople = createAsyncThunk(
   }
 )
 
-export const createPeople = createAsyncThunk(
-  'people/createPeople',
-  async (data) => {
+export const createPerson = createAsyncThunk(
+  'people/createPerson',
+  async ({ businessId, data }) => {
     const response = await axiosHelper({
-      url: '/people',
+      url: `/business/${businessId}/persons`,
       method: 'post',
       data,
     })
@@ -75,6 +78,19 @@ export const deletePerson = createAsyncThunk(
     const response = await axiosHelper({
       url: `/business/${businessId}/persons/${personId}`,
       method: 'delete',
+    })
+
+    return response.data
+  }
+)
+
+export const editPerson = createAsyncThunk(
+  'people/editPerson',
+  async ({ businessId, personId, data }) => {
+    const response = await axiosHelper({
+      url: `/business/${businessId}/persons/${personId}`,
+      method: 'put',
+      data,
     })
 
     return response.data

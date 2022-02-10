@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   selectBusinessList,
   selectBusinessListStatus,
-  fetchBusiness,
+  getBusiness,
   setBusinessDetail,
 } from '@state/businessSlice'
 import {
@@ -33,7 +33,7 @@ const BussinessList = () => {
     try {
       if (status === 'idle') {
         dispatch(handleLoader(true))
-        dispatch(fetchBusiness())
+        dispatch(getBusiness())
       }
     } catch (e) {
       alert('Could not complete the process')

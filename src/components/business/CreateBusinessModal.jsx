@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { createBusiness, fetchBusiness } from '@state/businessSlice'
+import { createBusiness, getBusiness } from '@state/businessSlice'
 import {
   handleLoader,
   handleModalCreateBusiness,
@@ -50,7 +50,7 @@ const CreateBusinessModal = () => {
     try {
       dispatch(handleLoader(true))
       await dispatch(createBusiness(data)).unwrap()
-      dispatch(fetchBusiness())
+      dispatch(getBusiness())
       alert('empresa creada')
     } catch (e) {
       alert('Could not complete the process')

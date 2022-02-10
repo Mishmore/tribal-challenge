@@ -7,28 +7,36 @@ import '@translations/i18n'
 import { useDispatch } from 'react-redux'
 import { handleModalCreateBusiness } from '@state/uiSlice'
 
-import { Layout } from '@components/Layout'
-import { Button } from '@components/Button'
+import { Layout, SectionHeader } from '@components/Layout'
+import { Button, ButtomMobile } from '@components/Button'
 import { Title } from '@components/Commons'
 import BussinessList from '@components/business/BusinessList'
 import CreateBusinessModal from '@components/business/CreateBusinessModal'
 import DeleteBusinessModal from '@components/business/DeleteBusinessModal'
 import EditBusinessModal from '@components/business/EditBusinessModal'
 
-const Dashboard = () => {
+const Business = () => {
   const { t } = useTranslation()
 
   const dispatch = useDispatch()
 
   return (
     <Layout>
-      <div tw="flex justify-between mb-5 xl:mb-10 items-center">
+      <SectionHeader>
         <Title>{t('business')}</Title>
-        <Button onClick={() => dispatch(handleModalCreateBusiness(true))}>
+        <Button
+          tw="hidden xl:block"
+          onClick={() => dispatch(handleModalCreateBusiness(true))}
+        >
           {t('create_business')}
         </Button>
+      </SectionHeader>
+      <div tw="pb-10 xl:pb-0">
+        <BussinessList />
       </div>
-      <BussinessList />
+      <ButtomMobile onClick={() => dispatch(handleModalCreateBusiness(true))}>
+        {t('create_business')}
+      </ButtomMobile>
       <CreateBusinessModal />
       <DeleteBusinessModal />
       <EditBusinessModal />
@@ -36,4 +44,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Business

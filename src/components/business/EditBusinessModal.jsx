@@ -11,7 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   updateBusiness,
-  fetchBusiness,
+  getBusiness,
   selectBusinessDetail,
 } from '@state/businessSlice'
 import {
@@ -24,6 +24,7 @@ import { Modal } from '@components/Modal'
 import { Field } from '@components/Field'
 import { Input } from '@components/Input'
 import { Button } from '@components/Button'
+import { useEffect } from 'react'
 
 const Form = tw.form`flex flex-col`
 
@@ -42,6 +43,7 @@ const EditBusinessModal = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) })
 
@@ -57,7 +59,7 @@ const EditBusinessModal = () => {
       await dispatch(
         updateBusiness({ businessId: business?.businessId, data })
       ).unwrap()
-      dispatch(fetchBusiness())
+      dispatch(getBusiness())
       alert('empresa editada')
     } catch (e) {
       alert('Could not complete the process')
@@ -65,6 +67,10 @@ const EditBusinessModal = () => {
       dispatch(handleLoader(false))
     }
   }
+
+  useEffect(() => {
+    if (business) setValue('name', business.name)
+  }, [business])
 
   return (
     <Modal active={modal} handleClose={closeModal} title={t('edit_business')}>

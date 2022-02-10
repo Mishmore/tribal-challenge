@@ -2,7 +2,7 @@ import tw from 'twin.macro'
 import 'styled-components/macro'
 
 import { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
 import {
@@ -23,7 +23,6 @@ import editIcon from '@assets/icons/edit-icon.svg'
 import deleteIcon from '@assets/icons/delete-icon.svg'
 
 const PeopleList = () => {
-  const navigate = useNavigate()
   const { id } = useParams()
 
   const dispatch = useDispatch()
@@ -31,10 +30,6 @@ const PeopleList = () => {
   const status = useSelector(selectPeopleStatus)
 
   useEffect(() => {
-    getList()
-  }, [dispatch, status])
-
-  const getList = () => {
     try {
       if (status === 'idle') {
         dispatch(handleLoader(true))
@@ -46,7 +41,7 @@ const PeopleList = () => {
       if (status === 'succeeded' || status === 'failed')
         dispatch(handleLoader(false))
     }
-  }
+  }, [dispatch, status])
 
   const handleEdit = (business) => {
     dispatch(setPersonDetail(business))
@@ -62,13 +57,9 @@ const PeopleList = () => {
     <List>
       {status === 'succeeded' &&
         list.map((elm) => (
-          <Item key={elm.businessId}>
-            <p
-              tw="flex-grow p-3 xl:p-5"
-              onClick={() => navigate(elm.businessId)}
-            >
-              {elm.name}
-            </p>
+          <Item key={elm.personId}>
+            <p tw="p-3 xl:p-5">{elm.name}</p>
+            <p tw="p-3 xl:p-5 text-gray-600">{elm.role}</p>
             <div tw="flex h-full">
               <IconWrapper tw="mr-3 pr-0" onClick={() => handleEdit(elm)}>
                 <Icon src={editIcon} alt="edit" />

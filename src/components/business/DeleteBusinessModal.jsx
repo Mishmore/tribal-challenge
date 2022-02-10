@@ -6,7 +6,7 @@ import '@translations/i18n'
 
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  fetchBusiness,
+  getBusiness,
   deleteBusiness,
   selectBusinessDetail,
 } from '@state/businessSlice'
@@ -34,7 +34,7 @@ const DeleteBusinessModal = () => {
     try {
       dispatch(handleLoader(true))
       await dispatch(deleteBusiness(business?.businessId)).unwrap()
-      dispatch(fetchBusiness())
+      dispatch(getBusiness())
       alert('empresa eliminada')
     } catch (e) {
       alert('Could not complete the process')
