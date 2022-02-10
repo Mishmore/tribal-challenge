@@ -3,8 +3,8 @@ import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
 // Languages
-import { es } from './es/translations'
-import { en } from './en/translations'
+import es from './es/translations'
+import en from './en/translations'
 
 // Translations
 const resources = {
@@ -16,4 +16,4 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
   resources,
 })
 
-i18n.changeLanguage('en')
+i18n.changeLanguage('es')

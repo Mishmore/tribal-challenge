@@ -16,7 +16,7 @@ ReactDOM.render(
         <GlobalStyles />
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/business/:id" element={<BusinessDetail />} />
+          <Route path="/:id" element={<BusinessDetail />} />
         </Routes>
       </BrowserRouter>
     </Provider>
