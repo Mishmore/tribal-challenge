@@ -18,6 +18,7 @@ import {
   handleModalEditBusiness,
   selectModalEditBusiness,
   handleLoader,
+  handleNotification,
 } from '@state/uiSlice'
 
 import { Modal } from '@components/Modal'
@@ -60,7 +61,13 @@ const EditBusinessModal = () => {
         updateBusiness({ businessId: business?.businessId, data })
       ).unwrap()
       dispatch(getBusiness())
-      alert('empresa editada')
+      dispatch(
+        handleNotification({
+          message: 'business_delete_success',
+          active: true,
+          type: 'success',
+        })
+      )
     } catch (e) {
       alert('Could not complete the process')
     } finally {

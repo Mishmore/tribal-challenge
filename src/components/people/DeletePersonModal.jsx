@@ -12,6 +12,7 @@ import {
   handleLoader,
   handleModalConfirmDeletePerson,
   selectModalConfirmDeletePerson,
+  handleNotification,
 } from '@state/uiSlice'
 
 import ConfirmDeleteModal from '@components/ConfirmDeleteModal'
@@ -37,7 +38,13 @@ const DeletePersonModal = () => {
         deletePerson({ businessId: id, personId: person?.personId })
       ).unwrap()
       dispatch(getPeople(id))
-      alert('empresa eliminada')
+      dispatch(
+        handleNotification({
+          message: 'person_delete_success',
+          active: true,
+          type: 'success',
+        })
+      )
     } catch (e) {
       alert('Could not complete the process')
     } finally {

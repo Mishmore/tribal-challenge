@@ -14,6 +14,7 @@ import {
   handleLoader,
   handleModalCreateBusiness,
   selectModalCreateBusiness,
+  handleNotification,
 } from '@state/uiSlice'
 
 import { Modal } from '@components/Modal'
@@ -51,7 +52,13 @@ const CreateBusinessModal = () => {
       dispatch(handleLoader(true))
       await dispatch(createBusiness(data)).unwrap()
       dispatch(getBusiness())
-      alert('empresa creada')
+      dispatch(
+        handleNotification({
+          message: 'business_create_success',
+          active: true,
+          type: 'success',
+        })
+      )
     } catch (e) {
       alert('Could not complete the process')
     } finally {

@@ -19,6 +19,12 @@ const en = {
   not_found: 'Page not found',
   not_found_description: 'The page you are looking is not available.',
   go_home: 'Back to home',
+  business_create_success: 'Business was created succesfully.',
+  business_edit_success: 'Business was edited succesfully.',
+  business_delete_success: 'Business was deleted succesfully.',
+  person_create_success: 'Person was created succesfully.',
+  person_edit_success: 'Person was edited succesfully.',
+  person_delete_success: 'Person was deleted succesfully.',
 }
 
 export default en

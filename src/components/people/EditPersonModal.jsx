@@ -16,6 +16,7 @@ import {
   handleLoader,
   handleModalEditPerson,
   selectModalEditPerson,
+  handleNotification,
 } from '@state/uiSlice'
 
 import { Modal } from '@components/Modal'
@@ -82,7 +83,13 @@ const EditPersonModal = () => {
         editPerson({ businessId: id, personId: person?.personId, data })
       ).unwrap()
       dispatch(getPeople(id))
-      alert('persona creada')
+      dispatch(
+        handleNotification({
+          message: 'person_edit_success',
+          active: true,
+          type: 'success',
+        })
+      )
     } catch (e) {
       alert('Could not complete the process')
     } finally {

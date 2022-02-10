@@ -19,6 +19,12 @@ const es = {
   not_found: 'Página no encontrada',
   not_found_description: 'La página que buscas no está disponible.',
   go_home: 'Regresar al inicio',
+  business_create_success: 'La empresa fue creada con éxito',
+  business_edit_success: 'La empresa fue editada con éxito',
+  business_delete_success: 'La empresa fue eliminada con éxito',
+  person_create_success: 'La persona fue creada con éxito',
+  person_edit_success: 'La persona fue editada con éxito',
+  person_delete_success: 'La persona fue eliminada con éxito',
 }
 
 export default es

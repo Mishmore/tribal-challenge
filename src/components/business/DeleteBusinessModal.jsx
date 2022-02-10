@@ -14,6 +14,7 @@ import {
   handleLoader,
   handleModalConfirmDeleteBusiness,
   selectModalConfirmDeleteBusiness,
+  handleNotification,
 } from '@state/uiSlice'
 
 import ConfirmDeleteModal from '@components/ConfirmDeleteModal'
@@ -35,7 +36,13 @@ const DeleteBusinessModal = () => {
       dispatch(handleLoader(true))
       await dispatch(deleteBusiness(business?.businessId)).unwrap()
       dispatch(getBusiness())
-      alert('empresa eliminada')
+      dispatch(
+        handleNotification({
+          message: 'business_delete_success',
+          active: true,
+          type: 'success',
+        })
+      )
     } catch (e) {
       alert('Could not complete the process')
     } finally {
