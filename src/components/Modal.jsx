@@ -1,5 +1,6 @@
 import tw, { styled } from 'twin.macro'
 import 'styled-components/macro'
+
 import { Overlay } from './Overlay'
 
 const ModalWrapper = tw.div`absolute`

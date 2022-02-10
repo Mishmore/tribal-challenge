@@ -8,6 +8,7 @@ import logo from '@assets/images/tribal-logo.png'
 import { Loader } from '@components/Loader'
 import { Link } from 'react-router-dom'
 import Notification from '@components/Notification'
+import LanguageSwitch from './LanguageSwitch'
 
 const LayoutBase = tw.div``
 
@@ -25,10 +26,11 @@ export const Layout = ({ children }) => {
   return (
     <LayoutBase>
       <Header>
-        <Container tw="flex justify-center xl:justify-start">
+        <Container tw="flex justify-between items-center">
           <Link to="/">
             <Logo src={logo} />
           </Link>
+          <LanguageSwitch />
         </Container>
       </Header>
       <Container>{children}</Container>
