@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker'
 import Business from './pages/Business'
 import BusinessDetail from './pages/BusinessDetail'
+import NotFound from './pages/NotFound'
 import GlobalStyles from './styles/GlobalStyles'
 
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<Business />} />
           <Route path="/:id" element={<BusinessDetail />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -16,6 +16,9 @@ const en = {
   save: 'Save',
   delete: 'Remove',
   confirm_delete: 'Are you sure to delete {{ business_name }}?',
+  not_found: 'Page not found',
+  not_found_description: 'The page you are looking is not available.',
+  go_home: 'Back to home',
 }
 
 export default en

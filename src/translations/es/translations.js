@@ -16,6 +16,9 @@ const es = {
   save: 'Guardar',
   delete: 'Eliminar',
   confirm_delete: '¿Estás seguro de eliminar {{ business_name }}?',
+  not_found: 'Página no encontrada',
+  not_found_description: 'La página que buscas no está disponible.',
+  go_home: 'Regresar al inicio',
 }
 
 export default es
