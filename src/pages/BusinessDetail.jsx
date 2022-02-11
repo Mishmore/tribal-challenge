@@ -11,13 +11,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { handleModalCreatePerson } from '@state/uiSlice'
 import { selectBusinessDetail, getBusinessDetail } from '@state/businessSlice'
 
-import { Layout, SectionHeader } from '@components/Layout'
+import { Layout, SectionHeader } from '@layout/Layout'
 import { Button, ButtomMobile } from '@components/Button'
-import { Title } from '@components/Commons'
-import PeopleList from '@components/people/PeopleList'
-import DeletePersonModal from '@components/people/DeletePersonModal'
-import CreatePersonModal from '@components/people/CreatePersonModal'
-import EditPersonModal from '@components/people/EditPersonModal'
+import { Title } from '@components/Title'
+import PeopleList from '@modules/people/PeopleList'
+import DeletePersonModal from '@modules/people/DeletePersonModal'
+import CreatePersonModal from '@modules/people/CreatePersonModal'
+import EditPersonModal from '@modules/people/EditPersonModal'
 
 const BusinessDetail = () => {
   const { t } = useTranslation()

@@ -6,6 +6,8 @@ module.exports = function override(config) {
     '@state': 'src/app/state',
     '@assets': 'src/assets',
     '@components': 'src/components',
+    '@modules': 'src/modules',
+    '@layout': 'src/layout',
     '@helpers': 'src/helpers',
     '@hooks': 'src/hooks',
     '@pages': 'src/pages',

@@ -10,8 +10,7 @@ const axiosHelper = async ({ url, data, method }) => {
     const response = await instance({ url, data, method })
     return response
   } catch (error) {
-    if (error.response) console.log(error.response.message)
-    return error
+    throw new Error(`Service failed, error: ${error}`)
   }
 }
 

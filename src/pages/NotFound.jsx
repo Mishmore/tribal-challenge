@@ -4,9 +4,9 @@ import 'styled-components/macro'
 import { useTranslation } from 'react-i18next'
 import '@translations/i18n'
 
-import { Layout, SectionHeader } from '@components/Layout'
+import { Layout, SectionHeader } from '@layout/Layout'
 import { Button } from '@components/Button'
-import { Title } from '@components/Commons'
+import { Title } from '@components/Title'
 import { Link } from 'react-router-dom'
 
 const NotFound = () => {

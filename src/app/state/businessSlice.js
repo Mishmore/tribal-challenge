@@ -3,9 +3,9 @@ import axiosHelper from '@helpers/axios'
 
 const initialState = {
   businessList: [],
-  businessDetail: null,
+  businessDetail: {},
   status: 'idle',
-  error: null,
+  error: '',
 }
 
 export const businessSlice = createSlice({

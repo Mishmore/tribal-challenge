@@ -44,20 +44,6 @@ const BussinessList = () => {
     dispatch(handleLoader(false))
   }
 
-  // useEffect(() => {
-  //   try {
-  //     if (status === 'idle') {
-  //       dispatch(handleLoader(true))
-  //       dispatch(getBusiness())
-  //     }
-  //   } catch (e) {
-  //     alert('Could not complete the process')
-  //   } finally {
-  //     if (status === 'succeeded' || status === 'failed')
-  //       dispatch(handleLoader(false))
-  //   }
-  // }, [dispatch, status])
-
   const handleEdit = (business) => {
     dispatch(setBusinessDetail(business))
     dispatch(handleModalEditBusiness(true))

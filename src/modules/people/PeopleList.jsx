@@ -35,7 +35,6 @@ const PeopleList = () => {
   const status = useSelector(selectPeopleStatus)
 
   useEffect(() => {
-    console.log('get list')
     getList()
   }, [])
 
@@ -44,20 +43,6 @@ const PeopleList = () => {
     await dispatch(getPeople(id))
     dispatch(handleLoader(false))
   }
-
-  // useEffect(() => {
-  //   try {
-  //     if (status === 'idle') {
-  //       dispatch(handleLoader(true))
-  //       dispatch(getPeople(id))
-  //     }
-  //   } catch (e) {
-  //     alert('Could not complete the process')
-  //   } finally {
-  //     if (status === 'succeeded' || status === 'failed')
-  //       dispatch(handleLoader(false))
-  //   }
-  // }, [dispatch, status])
 
   const handleEdit = (business) => {
     dispatch(setPersonDetail(business))
