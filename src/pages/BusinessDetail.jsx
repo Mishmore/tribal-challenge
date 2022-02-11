@@ -27,9 +27,10 @@ const BusinessDetail = () => {
   const dispatch = useDispatch()
   const business = useSelector(selectBusinessDetail)
 
+  // Load business detail on page load
   useEffect(() => {
-    if (!business && id) dispatch(getBusinessDetail(id))
-  }, [business, id])
+    if (!business?.name && id) dispatch(getBusinessDetail(id))
+  }, [business, id, dispatch])
 
   return (
     <Layout>

@@ -5,7 +5,7 @@ const initialState = {
   people: [],
   status: 'idle',
   error: null,
-  personDetail: null,
+  personDetail: {},
 }
 
 export const peopleSlice = createSlice({
@@ -32,9 +32,6 @@ export const peopleSlice = createSlice({
         state.status = 'failed'
         state.error = action.error.message
       })
-    // .addCase(createPerson.fulfilled, (state) => {
-    //   state.status = 'succeeded'
-    // })
   },
 })
 

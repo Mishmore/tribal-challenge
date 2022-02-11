@@ -30,8 +30,9 @@ const CreateBusinessModal = () => {
   const dispatch = useDispatch()
   const modal = useSelector(selectModalCreateBusiness)
 
+  // Form validation
   const schema = yup.object({
-    name: yup.string().trim().required('Ingrese un nombre válido'),
+    name: yup.string().trim().required('Enter a valid name'),
   })
 
   const {

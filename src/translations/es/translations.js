@@ -26,6 +26,7 @@ const es = {
   person_edit_success: 'La persona fue editada con éxito',
   person_delete_success: 'La persona fue eliminada con éxito',
   no_results: 'No se encontraron resultados',
+  service_error: 'Ocurrió un error, por favor inténtalo más tarde',
 }
 
 export default es

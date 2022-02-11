@@ -36,6 +36,7 @@ const EditPersonModal = () => {
   const modal = useSelector(selectModalEditPerson)
   const person = useSelector(selectPersonDetail)
 
+  // Form validation
   const schema = yup.object({
     name: yup
       .string()

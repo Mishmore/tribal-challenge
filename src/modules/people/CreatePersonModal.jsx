@@ -34,6 +34,7 @@ const CreatePersonModal = () => {
   const dispatch = useDispatch()
   const modal = useSelector(selectModalCreatePerson)
 
+  // Form validation
   const schema = yup.object({
     name: yup
       .string()

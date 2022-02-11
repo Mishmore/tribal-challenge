@@ -36,8 +36,9 @@ const EditBusinessModal = () => {
   const modal = useSelector(selectModalEditBusiness)
   const business = useSelector(selectBusinessDetail)
 
+  // Form validation
   const schema = yup.object({
-    name: yup.string().trim().required('Ingrese un nombre válido'),
+    name: yup.string().trim().required('Enter a valid name'),
   })
 
   const {
@@ -77,7 +78,7 @@ const EditBusinessModal = () => {
 
   useEffect(() => {
     if (business) setValue('name', business.name)
-  }, [business])
+  }, [business, setValue])
 
   return (
     <Modal active={modal} handleClose={closeModal} title={t('edit_business')}>
